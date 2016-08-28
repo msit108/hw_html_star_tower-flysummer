@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <style>
+        body {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    
+        <h1>星狀塔</h1>
+
+
+        txt1:
+        <input type="text" id="txt1" name="txt1" value="5" PlaceHolder="Keyin something" size="40">
+        <br><br>
+        <input type="button" id="Button1" name="Button1"
+                value="1. 點我一下，執行半個金字塔" onclick="Button1_onclick()">
+        <input type="button" id="Button2" name="Button2"
+                value="2. 點我一下，執行金字塔" onclick="Button2_onclick()">
+        <input type="button" id="Button2" name="Button2"
+                value="3. 點我一下，執行星狀塔" onclick="Button3_onclick()">
+        <br><br>
+        <p>顯示結果:</p>
+        <div id="printStar"></div>
+
+    
+    
+    <script>
+        function Button1_onclick() {
+            var star = "";
+            var count1 = parseInt(txt1.value);
+            for (var i = 0; i < count1; i++) {
+                
+                for (var j = 0; j <= i; j++) {
+                    star =  star + "*";
+                }
+                star = star + "<br>";
+            }
+            printStar.innerHTML = star;
+
+        }
+        function Button2_onclick() {
+            var star = "";
+            count1 = parseInt(txt1.value); //全域變數
+            for (var i = 1; i <= count1; i++) {
+
+                for (var k = window.count1-i-1 ; k >= 0; k--) {
+                    star += "&nbsp";
+                    //star = star + "1";
+                }
+
+                for (var j = 1; j <= (i*2)-1; j++) {
+                    star = star + "*";
+                }
+                star = star + "<br>";
+            }
+            printStar.innerHTML = star;
+
+        }
+        function Button3_onclick() {
+            var star = "";
+            count1 = parseInt(txt1.value); //全域變數
+            for (var i = 0; i < count1; i++) {
+
+                for (var k = 0; k <= i; k++) {
+                    star = star + "*";
+                }
+
+                for (var l = (window.count1-i-1)*2 - 1; l > 0; l--) {
+                    star += "&nbsp";
+                }
+                if (i == window.count1-1) {
+                    i--;
+                    window.count1 = -1
+                }
+                for (var j = i; j >=0; j--) {
+                    star = star + "*";
+                }
+                star = star + "<br>";
+                if (window.count1 == -1)
+                    break;
+            }
+            printStar.innerHTML = star;
+
+        }
+    </script>
+
+</body>
+</html>
